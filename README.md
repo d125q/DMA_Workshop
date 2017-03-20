@@ -6,3 +6,9 @@ the
 [Ss. Cyril and Methodius University](http://ukim.edu.mk/en_index.php).  The
 LPC1769 microcontrollers as well as tutoring were kindly provided by Bojan
 Gruevski of [SEAVUS](http://www.seavus.com/).
+
+# Building
+You will require
+the
+[LPCXpresso](http://www.nxp.com/products/software-and-tools/software-development-tools/software-tools/lpc-microcontroller-utilities/lpcxpresso-ide-v8.2.2:LPCXPRESSO) IDE
+in order to build the code and flash it on the microcontroller.
