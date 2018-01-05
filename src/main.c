@@ -27,20 +27,20 @@ int main(void) {
 	iap_status = (e_iap_status) generator_init();
 	if (iap_status != CMD_SUCCESS) {
 		while (1)
-			; // Error!!!
+			;  // Error!!!
 	}
 
 	LED2_setup();
 	DMA_power_up();
 
 #ifdef COUNT_CLK_CYCLES
-	LPC_SC->PCONP |= 1 << 2; // Power up Timer 1
-	LPC_SC->PCLKSEL0 |= 0x01 << 4; // CCLK
+	LPC_SC->PCONP |= 1 << 2;        // Power up Timer 1
+	LPC_SC->PCLKSEL0 |= 0x01 << 4;  // CCLK
 	LPC_TIM1->PR = 0xffffffff;
-	LPC_TIM1->TCR |= 1 << 1; // Manually reset Timer 1 (forced)
-	LPC_TIM1->TCR &= ~(1 << 1); // Stop resetting the timer
+	LPC_TIM1->TCR |= 1 << 1;     // Manually reset Timer 1 (forced)
+	LPC_TIM1->TCR &= ~(1 << 1);  // Stop resetting the timer
 	LPC_TIM1->MCR = 0x00;
-	LPC_TIM1->TCR |= 1 << 0; // Start T1
+	LPC_TIM1->TCR |= 1 << 0;     // Start Timer 1
 
 	uint64_t start = LPC_TIM1->TC * 0xffffffff + LPC_TIM1->PC; // Start
 #endif
@@ -49,13 +49,11 @@ int main(void) {
 	uint64_t end = LPC_TIM1->TC * 0xffffffff + LPC_TIM1->PC; // End
 #endif
 
-	if (correct)
-		LED2_turn_on();
-	else
-		LED2_start_blinking();
+	if (correct) LED2_turn_on();
+	else LED2_start_blinking();
 
 	while (1)
 		;
-
+      
 	return 0;
 }

@@ -1,3 +1,10 @@
+/*
+ * dma.h
+ *
+ *  Created on: Jan 4, 2016
+ *      Author: Dario Gjorgjevski, Kire Kolaroski
+ */
+
 #ifndef __DMA_H
 #define __DMA_H
 #ifdef __USE_CMSIS

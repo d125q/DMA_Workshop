@@ -30,9 +30,8 @@
 #endif
 
 /**
- * Optimal chunk buffer size.  Set to a reasonable
- * default (1), but will be updated as soon as the
- * header is read.
+ * Optimal chunk buffer size.  Set to a reasonable default (1), but
+ * will be updated as soon as the header is read.
  */
 uint32_t CHUNK_BUF_SIZE = 1;
 
@@ -57,7 +56,7 @@ typedef uint8_t * chunk_buf_t;
 /**
  * Allocates a chunk buffer.
  *
- * @return a chunk buffer (pointer to memory)
+ * @return chunk buffer (pointer to memory)
  */
 chunk_buf_t alloc_chunk_buf() {
 	return (chunk_buf_t) malloc(sizeof(uint8_t) * h.chunk_size * CHUNK_BUF_SIZE);
@@ -99,7 +98,7 @@ bool validate_chunks()
 	chunk_buf_t curr_buf;
 	unsigned int i;
 	unsigned int chunks_left = h.chunk_count -
-			(h.chunk_count / CHUNK_BUF_SIZE) * CHUNK_BUF_SIZE;
+		(h.chunk_count / CHUNK_BUF_SIZE) * CHUNK_BUF_SIZE;
 
 	// Initialize DMA for chunk buffers
 	DMA_init((uint32_t) ARCHIVE_ADDR, (uint32_t) chunk_buf1);
@@ -120,7 +119,7 @@ bool validate_chunks()
 	// Check the footer meanwhile
 #ifdef CHECK_FOOTER
 	uint64_t *footer = (uint32_t) ARCHIVE_ADDR +
-			h.chunk_size * h.chunk_count;
+		h.chunk_size * h.chunk_count;
 
 	if (*footer != FOOTER_PATTERN) // 8B footer (should be 8 0xAB bytes)
 		return false;
